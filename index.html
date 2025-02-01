@@ -9,20 +9,20 @@
 <body>
     
     <div id="headerBox">TraceNLearn</div>
-    <h1>Draw a number, letter, or symbol</h1>
 
     <div id="predictionContainer">
-        <div id="predictionText">A</div>
-        <div id="predictionWord">Apple</div>
-        <img id="predictionImg" src="apple.jpg">
+        <h1>Draw a number, letter, or symbol</h1>
+        <div id="predictionText" style="display: none;">A</div>
+        <div id="predictionWord" style="display: none;">Apple</div>
+        <img id="predictionImg" src="apple.jpg" style="display: none;">
     </div>
 
     <div id="canvasContainer">
         <canvas id="canvas"></canvas>
 
         <div id="btnContainer">
-            <button id="submitBtn">Submit</button>
-            <button id="clearBtn">Clear</button>
+            <button id="submitBtn" onclick="submitCanvas()">Submit</button>
+            <button id="clearBtn" onclick="clearCanvas()">Clear</button>
         </div>
     </div>
     

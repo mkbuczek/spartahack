@@ -1,6 +1,10 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const predictionText = document.getElementById("predictionText");
+const predictionWord = document.getElementById("predictionWord");
+const predictionImg = document.getElementById("predictionImg");
+
 //variable to determine whether the user is currently
 //drawing or not
 let drawing = false;
@@ -11,6 +15,7 @@ canvas.height = canvas.clientHeight;
 //adjust line width
 ctx.lineWidth = 5;
 
+//detects mouse being held down on canvas
 canvas.addEventListener("mousedown", (event) => {
     drawing = true;
     ctx.beginPath();
@@ -22,6 +27,8 @@ canvas.addEventListener("mousedown", (event) => {
     ctx.moveTo(cursorX, cursorY);
 });
 
+//detects the mouse moving while held down
+//to begin drawing
 canvas.addEventListener("mousemove", (event) => {
     if (drawing) {
 
@@ -34,7 +41,23 @@ canvas.addEventListener("mousemove", (event) => {
     }
 });
 
+//detects mouse not held down, no longer drawing
 canvas.addEventListener("mouseup", () => {
     drawing = false;
 });
 
+function submitCanvas(){
+    const imageData = canvas.toDataURL('image/png');
+
+    //debug
+    //predictionImg.src = imageData;
+
+    predictionText.style.display = "flex";
+    predictionWord.style.display = "flex";
+    predictionImg.style.display = "block";
+}
+
+//clears the canvas
+function clearCanvas(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
