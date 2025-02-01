@@ -1,0 +1,59 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(0, 0%, 90%)
+}
+
+h1{
+    text-align: center;
+    margin: 50px;
+    font-size: 3em;
+}
+
+#predictionImg{
+
+}
+
+#predictionContainer{
+    border: solid 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+    background
+}
+
+#predictionText{
+    font-size: 7em;
+}
+
+#predictionWord{
+    font-size: 3em;
+}
+
+#predictionContainer *{
+    padding: 15px;
+}
+
+#canvas{
+    background-color: white;
+    border: 5px;
+    width: 70%;
+}
+
+#canvasContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#btnContainer *{
+    font-size: 2em;
+    border-radius: 10px;
+    margin: 15px;
+    width: 150px;
+    text-align: center;
+}
