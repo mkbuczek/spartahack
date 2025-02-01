@@ -53,11 +53,20 @@ function submitCanvas(){
     //predictionImg.src = imageData;
 
     predictionText.style.display = "flex";
-    predictionWord.style.display = "flex";
     predictionImg.style.display = "block";
+
+    return imageData;
 }
 
 //clears the canvas
 function clearCanvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function getCanvasTensor(){
+    return tf.browser.fromPixels(canvas, 1)
+    .resizeNearestNeighbor([28, 28])
+    .toFloat()
+    .div(tf.scalar(255.0))
+    .expandDims();
 }
