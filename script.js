@@ -13,7 +13,7 @@ canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
 //adjust line width
-ctx.lineWidth = 5;
+ctx.lineWidth = 10;
 
 //detects mouse being held down on canvas
 canvas.addEventListener("mousedown", (event) => {
