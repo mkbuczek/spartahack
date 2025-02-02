@@ -26,7 +26,7 @@ body{
 }
 h1{
     color: white;
-    width: 75%;
+    width: 80%;
     border-radius: 25px;
     height: 20%;
     display: flex;
@@ -41,7 +41,7 @@ h1{
 #predictionImg{
     width: 50%;
     height: 50%;
-    
+    border: solid 5px #116e4e;
     border-radius: 5000px;
 }
 
@@ -54,8 +54,8 @@ h1{
     align-items: center;
     width: 50vw;
     height: 50vh;
-    max-width: 700px;
-    max-height: 700px;
+    max-width: 500px;
+    max-height: 500px;
     background-color: hsl(0, 0%, 85%);
     margin: 0px;
     box-shadow: 0px 15px 25px hsl(73, 83%, 86%);
