@@ -67,9 +67,8 @@ h1{
     background-color: white;
     border: solid 5px;
     border-radius: 20px;
-    width: 70vw;
-    max-width: 900px;
-    height: 25vh;
+    width: 200px;
+    height: 200px;
 }
 
 #canvasContainer{

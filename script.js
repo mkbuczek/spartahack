@@ -47,13 +47,41 @@ canvas.addEventListener("mouseup", () => {
 });
 
 function submitCanvas(){
-    const imageData = canvas.toDataURL('image/png');
 
-    //debug
-    //predictionImg.src = imageData;
+    const tempCanvas = document.createElement("canvas");
+    const tempCtx = tempCanvas.getContext("2d");
 
-    predictionText.style.display = "flex";
-    predictionImg.style.display = "block";
+    tempCanvas.width = canvas.width;
+    tempCanvas.height = canvas.height;
+
+    tempCtx.fillStyle= "white";
+    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+    tempCtx.drawImage(canvas, 0, 0);
+
+    const imageData = tempCanvas.toDataURL('image/png');
+
+    console.log(imageData);
+
+    fetch('http://127.0.0.1:5000/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: imageData })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Prediction result:', data)
+
+        predictionText.innerHTML = data.prediction;
+        predictionText.style.display = "flex";
+        predictionImg.style.display = "block";
+
+    })
+    .catch(error => {
+        console.error('Error', error);
+    });
 
     return imageData;
 }
