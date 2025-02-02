@@ -10,7 +10,7 @@ model = tf.keras.models.load_model('mnist_model.keras')
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/predict": {"origins": "https://127.0.0.1:5500"}})
+CORS(app)
 
 @app.route('/predict', methods=['POST'])
 
@@ -22,7 +22,7 @@ def predict():
     img = Image.open(io.BytesIO(img_data))
 
     #debug
-    img.show()
+    #img.show()
     img = img.convert('L')
     img = img.resize((28, 28))
     img_array = np.array(img)

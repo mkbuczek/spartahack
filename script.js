@@ -63,6 +63,26 @@ function submitCanvas(){
 
     console.log(imageData);
 
+    fetch('tracenlearn.co/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: imageData })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Prediction result:', data)
+
+        predictionText.innerHTML = data.prediction;
+        predictionText.style.display = "flex";
+        predictionImg.style.display = "block";
+
+    })
+    .catch(error => {
+        console.error('Error', error);
+    });
+
     fetch('http://127.0.0.1:5000/predict', {
         method: 'POST',
         headers: {
@@ -82,6 +102,7 @@ function submitCanvas(){
     .catch(error => {
         console.error('Error', error);
     });
+
 
     return imageData;
 }
