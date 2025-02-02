@@ -6,7 +6,7 @@ import tensorflow as tf
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-model = tf.keras.models.load_model('emnist_model.keras')
+model = tf.keras.models.load_model('mnist_model.keras')
 
 app = Flask(__name__)
 
