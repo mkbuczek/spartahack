@@ -6,11 +6,11 @@ import tensorflow as tf
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-model = tf.keras.models.load_model('mnist_model.keras')
+model = tf.keras.models.load_model('emnist_model.keras')
 
 app = Flask(__name__)
 
-CORS(app)
+CORS(app, resources={r"/predict": {"origins": "https://127.0.0.1:5500"}})
 
 @app.route('/predict', methods=['POST'])
 
@@ -22,11 +22,10 @@ def predict():
     img = Image.open(io.BytesIO(img_data))
 
     #debug
-    #img.show()
+    img.show()
     img = img.convert('L')
     img = img.resize((28, 28))
     img_array = np.array(img)
-    img_array = 255 - img_array
 
     img_array = img_array.astype('float32') / 255.0
 
@@ -39,6 +38,7 @@ def predict():
 
     #debug
     #img.show()
+    confidence = np.max(prediction, axis=1)[0]  # Get the confidence score (probability of the predicted class)
 
     return jsonify({'prediction': str(predicted_class)})
 
